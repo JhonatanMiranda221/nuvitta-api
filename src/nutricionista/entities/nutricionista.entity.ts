@@ -1,5 +1,6 @@
 
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { Paciente } from 'src/paciente/entities/paciente.entity';
 
 @Entity({ name: 'tb_nutricionistas' })
 export class Nutricionista {
@@ -29,4 +30,7 @@ export class Nutricionista {
 
     @UpdateDateColumn()
     updatedAt!: Date;
+
+    @OneToMany(() => Paciente, (paciente) => paciente.nutricionista)
+    pacientes!: Paciente[]
 }
