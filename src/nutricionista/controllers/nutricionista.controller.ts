@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { NutricionistaService } from "../services/nutricionista.service";
 import { CreateNutricionistaDto } from "../Dto/create-nutricionista.dto";
+import { UpdateNutricionistaDto } from "../Dto/update-nutricionista.dto";
 
 @Controller('/nutricionista')
 export class NutricionistaController {
@@ -29,9 +30,12 @@ export class NutricionistaController {
     }
     @Put("/:id")
     @HttpCode(HttpStatus.OK)
-    update(@Param('id', ParseIntPipe) id: number, @Body() dto: CreateNutricionistaDto) {
-        return this.nutricionistaService.update(id, dto);
-    }
+    update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateNutricionistaDto,
+) {
+    return this.nutricionistaService.update(id, dto);
+}
     @Delete("/:id")
     @HttpCode(HttpStatus.NO_CONTENT)
     delete(@Param('id') id: number) {

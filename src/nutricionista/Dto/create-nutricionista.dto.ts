@@ -1,28 +1,55 @@
-import { IsString, IsNotEmpty, IsEmail,IsOptional, MinLength} from "class-validator";
+import {
+  IsString,
+  IsNotEmpty,
+  IsEmail,
+  IsOptional,
+  MinLength,
+  Length,
+  IsPhoneNumber
+} from "class-validator";
 
 export class CreateNutricionistaDto {
-    @IsNotEmpty({ message: 'O nome é obrigatório' })
+
     @IsString()
+    @IsNotEmpty({
+      message: 'O nome é obrigatório'
+    })
     nome!: string;
 
-    @IsEmail()
-    @IsNotEmpty({ message: 'O email é obrigatório' })
+
+    @IsEmail({}, {
+      message: 'Informe um email válido'
+    })
+    @IsNotEmpty({
+      message: 'O email é obrigatório'
+    })
     email!: string;
 
-    @IsString()
-    @MinLength(6)
-    @IsNotEmpty({ message: 'A senha é obrigatória' })
-    senha!: string;
 
     @IsString()
-    @IsNotEmpty({ message: 'O CRN é obrigatório' })
+    @MinLength(8, {
+      message: 'A senha deve ter no mínimo 8 caracteres'
+    })
+    @IsNotEmpty({
+      message: 'A senha é obrigatória'
+    })
+    senha!: string;
+
+
+    @IsString()
+    @Length(5, 30)
+    @IsNotEmpty({
+      message: 'O CRN é obrigatório'
+    })
     crn!: string;
+
 
     @IsString()
     @IsOptional()
     especialidade?: string;
 
-    @IsString()
+
+    @IsPhoneNumber('BR')
     @IsOptional()
     telefone?: string;
 }

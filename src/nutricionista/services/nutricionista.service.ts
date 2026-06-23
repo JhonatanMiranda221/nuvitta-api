@@ -1,9 +1,14 @@
-import { HttpException, Injectable } from "@nestjs/common";
+import {
+  Injectable,
+  NotFoundException,
+  ConflictException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ILike, Repository } from "typeorm";
+
 import { Nutricionista } from "../entities/nutricionista.entity";
 import { CreateNutricionistaDto } from "../Dto/create-nutricionista.dto";
-
+import { UpdateNutricionistaDto } from "../Dto/update-nutricionista.dto";
 
 @Injectable()
 export class NutricionistaService {
@@ -12,32 +17,124 @@ export class NutricionistaService {
     private nutricionistaRepository: Repository<Nutricionista>,
   ) {}
 
-    async create(dto: CreateNutricionistaDto): Promise<Nutricionista> { 
-    const nutricionista = this.nutricionistaRepository.create(dto);
-    return this.nutricionistaRepository.save(nutricionista);
+  async create(
+    dto: CreateNutricionistaDto,
+  ): Promise<Nutricionista> {
+
+    const emailExistente =
+      await this.nutricionistaRepository.findOne({
+        where: { email: dto.email },
+      });
+
+    if (emailExistente) {
+      throw new ConflictException(
+        "Email já cadastrado",
+      );
+    }
+
+    const crnExistente =
+      await this.nutricionistaRepository.findOne({
+        where: { crn: dto.crn },
+      });
+
+    if (crnExistente) {
+      throw new ConflictException(
+        "CRN já cadastrado",
+      );
+    }
+
+    const nutricionista =
+      this.nutricionistaRepository.create(dto);
+
+    return this.nutricionistaRepository.save(
+      nutricionista,
+    );
   }
 
-    async findAll(): Promise<Nutricionista[]> {
+  async findAll(): Promise<Nutricionista[]> {
     return this.nutricionistaRepository.find();
   }
 
-    async findBynome (nome: string): Promise<Nutricionista[]> {
-        return await this.nutricionistaRepository.find({ 
-            where: {
-                nome: ILike (`%${nome}%`) },
-    }); //Fazer if quando digitar um nome que não exista, retornar mensagem de erro
+  async findBynome(
+    nome: string,
+  ): Promise<Nutricionista[]> {
+    return this.nutricionistaRepository.find({
+      where: {
+        nome: ILike(`%${nome}%`),
+      },
+    });
+  }
+
+  async findById(
+    id: number,
+  ): Promise<Nutricionista> {
+    const nutricionista =
+      await this.nutricionistaRepository.findOne({
+        where: { id },
+      });
+
+    if (!nutricionista) {
+      throw new NotFoundException(
+        "Nutricionista não encontrado",
+      );
     }
-    async findById (id: number): Promise<Nutricionista> {
-        const nutricionista = await this.nutricionistaRepository.findOne({ where: { id } });
-        if (!nutricionista) throw new HttpException('Nutricionista não encontrado', 404);
-        return nutricionista;
+
+    return nutricionista;
+  }
+
+  async update(
+    id: number,
+    dto: UpdateNutricionistaDto,
+  ): Promise<Nutricionista> {
+
+    const nutricionista =
+      await this.findById(id);
+
+    if (
+      dto.email &&
+      dto.email !== nutricionista.email
+    ) {
+      const emailExistente =
+        await this.nutricionistaRepository.findOne({
+          where: { email: dto.email },
+        });
+
+      if (emailExistente) {
+        throw new ConflictException(
+          "Email já cadastrado",
+        );
+      }
     }
-    async update (id: number, dto: CreateNutricionistaDto): Promise<Nutricionista> {
-        const nutricionista = await this.findById(id);
-        this.nutricionistaRepository.merge(nutricionista, dto);
-        return this.nutricionistaRepository.save(nutricionista);
+
+    if (
+      dto.crn &&
+      dto.crn !== nutricionista.crn
+    ) {
+      const crnExistente =
+        await this.nutricionistaRepository.findOne({
+          where: { crn: dto.crn },
+        });
+
+      if (crnExistente) {
+        throw new ConflictException(
+          "CRN já cadastrado",
+        );
+      }
     }
-    async delete (id: number): Promise<void> {
-        await this.nutricionistaRepository.delete(id);
-    }
+
+    this.nutricionistaRepository.merge(
+      nutricionista,
+      dto,
+    );
+
+    return this.nutricionistaRepository.save(
+      nutricionista,
+    );
+  }
+
+  async delete(id: number): Promise<void> {
+    await this.findById(id);
+
+    await this.nutricionistaRepository.delete(id);
+  }
 }
