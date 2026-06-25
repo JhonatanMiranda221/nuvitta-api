@@ -31,7 +31,7 @@ export class Paciente {
     @Column({ length: 200 })
     objetivo!: string;
 
-    @Column()
+    @Column({default:true})
     ativo!: boolean;
 
     @CreateDateColumn()

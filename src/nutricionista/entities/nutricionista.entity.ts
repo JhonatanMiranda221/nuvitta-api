@@ -8,12 +8,12 @@ export class Nutricionista {
     id!: number;
 
     @Column({length: 100})
-     nome!: string;
+    nome!: string;
 
     @Column({unique: true, length: 150})
     email!: string;
 
-    @Column()
+    @Column({ select: false })
     senha!: string;
 
     @Column({ unique: true, length: 20 })
