@@ -1,158 +1,260 @@
-Nuvitta Backend 🍎
+# 🍎 Nuvitta Backend
 
-API robusta para gestão nutricional, focada em performance e escalabilidade. Este é um projeto autoral desenvolvido para consolidar práticas avançadas de desenvolvimento Back-End.
+<div align="center">
 
+## Gestão inteligente para profissionais de nutrição
 
-Origem do nome: Nutrição + Vita (vida em latim)
+Uma plataforma completa para nutricistas gerenciarem pacientes, avaliações, planos alimentares e evolução nutricional.
 
+</div>
 
+---
 
-🎯 Objetivo
+# 📖 Sobre o projeto
 
-Criar um software completo para nutricionistas, semelhante ao Dietbox, Nutrium, WebDiet e Avanutri, porém mais moderno, intuitivo e acessível.
+O **Nuvitta** é um sistema de gestão nutricional desenvolvido para auxiliar nutricionistas no acompanhamento completo de seus pacientes.
 
-🚀 Proposta Técnica
+O nome surgiu da união entre:
 
-O sistema utiliza o ecossistema NestJS para garantir uma arquitetura modular e de fácil manutenção, aplicando princípios de Clean Architecture e SOLID.
+**Nutrição + Vita (vida em latim)**
 
-🛠 Tech Stack
+O projeto busca criar uma solução moderna, intuitiva e acessível, inspirada em plataformas como **Dietbox, Nutrium e WebDiet**, porém utilizando uma arquitetura escalável e preparada para recursos avançados como inteligência artificial.
 
-Backend
+---
 
-CamadaTecnologiaRuntimeNode.jsFrameworkNestJS (TypeScript)ORMTypeORMDatabaseMySQLTestingJest
+# 🎯 Objetivo
 
-Frontend (futuro)
+Criar uma plataforma onde nutricionistas possam:
 
-CamadaTecnologiaFrameworkReact / Next.jsEstilizaçãoTailwind CSSComponentesShadcn UI
+* 👤 Gerenciar pacientes
+* 📊 Registrar avaliações antropométricas
+* 🥗 Criar planos alimentares personalizados
+* 📈 Acompanhar evolução dos pacientes
+* 📄 Gerar relatórios nutricionais
+* 🤖 Utilizar inteligência artificial como assistente nutricional
 
-⚙️ Setup do Projeto
+---
 
-Pré-requisitos
+# 🛠 Tecnologias utilizadas
 
+## Backend
 
-Node.js
-MySQL
+* NestJS
+* Node.js
+* TypeScript
+* TypeORM
+* MySQL
+* Class Validator
+* Class Transformer
 
+## Futuro Frontend
 
-Instalação
+* React
+* Next.js
+* Tailwind CSS
+* Shadcn UI
 
+---
 
-Clone o repositório:
+# 🏗 Arquitetura
 
+O projeto utiliza uma arquitetura modular baseada no NestJS.
 
-bashgit clone https://github.com/JhonatanMiranda221/projeto_nuvitta.git
+Fluxo da aplicação:
 
+```
+Cliente
+   |
+   ↓
+Controller
+   |
+   ↓
+Service
+   |
+   ↓
+Repository
+   |
+   ↓
+Database
+```
 
-Instale as dependências:
+Responsabilidades:
 
+### Controllers
 
-bashnpm install
+Responsáveis por receber as requisições HTTP e direcionar para os serviços.
 
+### Services
 
-Configure as variáveis de ambiente:
+Contêm as regras de negócio da aplicação.
 
+### Entities
 
-bashcp .env.example .env
+Representam as tabelas e relacionamentos do banco de dados.
 
+### DTOs
 
-Preencha o .env com suas configurações:
+Responsáveis pela validação e transferência dos dados.
 
+---
 
-envDB_HOST=localhost
+# 🚀 Como executar
+
+## Clone o repositório
+
+```bash
+git clone https://github.com/JhonatanMiranda221/projeto_nuvitta.git
+```
+
+## Instale as dependências
+
+```bash
+npm install
+```
+
+## Configure as variáveis de ambiente
+
+```bash
+cp .env.example .env
+```
+
+## Inicie o servidor
+
+```bash
+npm run start:dev
+```
+
+Servidor disponível em:
+
+```
+http://localhost:4000
+```
+
+---
+
+# ⚙️ Variáveis de ambiente
+
+```env
+DB_HOST=localhost
 DB_PORT=3306
 DB_USERNAME=root
 DB_PASSWORD=sua_senha
 DB_NAME=db_nuvitta
 DB_SYNC=true
+```
 
+---
 
-Inicie o servidor:
+# 📦 Módulos
 
+## ✅ Nutricionista
 
-bashnpm run start:dev
+Módulo responsável pelo gerenciamento dos profissionais.
 
-O servidor estará disponível em http://localhost:4000.
+Funcionalidades:
 
-📂 Módulos
+* Cadastro de nutricionistas
+* Atualização de informações
+* Busca por ID
+* Busca por nome
+* Controle de CRN
 
-✅ Nutricionista
+Rotas:
 
-CRUD completo para gestão de nutricionistas.
+| Método | Rota                      | Descrição              |
+| ------ | ------------------------- | ---------------------- |
+| GET    | /nutricionista            | Lista todos            |
+| GET    | /nutricionista/:id        | Busca por ID           |
+| GET    | /nutricionista/nome/:nome | Busca por nome         |
+| POST   | /nutricionista            | Cria nutricionista     |
+| PUT    | /nutricionista/:id        | Atualiza nutricionista |
+| DELETE | /nutricionista/:id        | Remove nutricionista   |
 
-MétodoEndpointDescriçãoGET/nutricionistaLista todosGET/nutricionista/:idBusca por IDGET/nutricionista/nome/:nomeBusca por nomePOST/nutricionistaCria nutricionistaPUT/nutricionista/:idAtualiza nutricionistaDELETE/nutricionista/:idDeleta nutricionista
+---
 
-✅ Paciente
+## ✅ Paciente
 
-CRUD completo para gestão de pacientes com relacionamento ao nutricionista.
+Módulo responsável pelo gerenciamento dos pacientes vinculados aos nutricistas.
 
-MétodoEndpointDescriçãoGET/pacienteLista todosGET/paciente/:idBusca por IDGET/paciente/nome/:nomeBusca por nomePOST/pacienteCria pacientePUT/paciente/:idAtualiza pacienteDELETE/paciente/:idDeleta paciente
+Funcionalidades:
 
-⏳ Avaliação Antropométrica
+* Cadastro de pacientes
+* Validação de dados
+* Busca por ID
+* Busca por nome
+* Atualização de informações
+* Controle de pacientes ativos
+* Relacionamento Nutricionista → Pacientes
 
-Registro de avaliações físicas dos pacientes com cálculos automáticos.
+Relacionamento:
 
-Campos: peso, altura, cintura, quadril, abdômen, braço, panturrilha, percentual de gordura, massa muscular, massa gorda, observações
+```
+Nutricionista (1)
+        |
+        |
+        N
+Paciente
+```
 
-Cálculos automáticos: IMC, RCQ, TMB, idade
+Rotas:
 
-⏳ Alimentos
+| Método | Rota                 | Descrição         |
+| ------ | -------------------- | ----------------- |
+| GET    | /paciente            | Lista todos       |
+| GET    | /paciente/:id        | Busca por ID      |
+| GET    | /paciente/nome/:nome | Busca por nome    |
+| POST   | /paciente            | Cria paciente     |
+| PUT    | /paciente/:id        | Atualiza paciente |
+| DELETE | /paciente/:id        | Remove paciente   |
 
-CRUD de alimentos com integração à tabela TACO e Open Food Facts.
+---
 
-Arquitetura de consulta:
+# 🔜 Próximos módulos
 
-Pesquisa → Banco MySQL → Encontrou? → Retorna
-                       → Não encontrou? → Open Food Facts → Salva → Retorna
+| Módulo                             | Status                |
+| ---------------------------------- | --------------------- |
+| Avaliação Antropométrica           | 🔜 Em desenvolvimento |
+| Alimentos (TACO + Open Food Facts) | 🔜 Planejado          |
+| Plano Alimentar                    | 🔜 Planejado          |
+| Refeições e Itens                  | 🔜 Planejado          |
+| Exportação PDF                     | 🔜 Planejado          |
+| Dashboard                          | 🔜 Planejado          |
+| Autenticação JWT + bcrypt          | 🔜 Planejado          |
+| Inteligência Artificial            | 🔜 Planejado          |
+| Frontend React + Next.js           | 🔜 Planejado          |
 
-⏳ Plano Alimentar
+---
 
-Criação e gestão de planos alimentares personalizados.
+# 🗺 Roadmap
 
-⏳ Refeições e Itens
+* [x] Configuração inicial do NestJS
+* [x] Módulo Nutricionista
+* [x] Módulo Paciente
+* [ ] Avaliação Antropométrica
+* [ ] Banco de alimentos TACO
+* [ ] Integração Open Food Facts
+* [ ] Plano Alimentar
+* [ ] Refeições e Itens
+* [ ] Exportação PDF
+* [ ] Dashboard
+* [ ] Autenticação JWT + bcrypt
+* [ ] Inteligência Artificial
+* [ ] Frontend React + Next.js
 
-Composição das refeições com itens alimentares.
+---
 
-⏳ Exportação PDF
+# 👨‍💻 Autor
 
-Geração de relatórios e planos alimentares em PDF.
+**Jhonatan Miranda**
 
-⏳ Dashboard
+Desenvolvedor Backend em formação com foco em Node.js e NestJS.
 
-Visão geral com métricas e evolução dos pacientes.
+Projeto desenvolvido com objetivo de aplicar boas práticas de arquitetura, organização de código e desenvolvimento de uma aplicação real.
 
-⏳ Autenticação JWT
+🔗 Links:
 
-Login, proteção de rotas, refresh token e bcrypt para hash de senha.
+GitHub:
+github.com/JhonatanMiranda221
 
-⏳ Inteligência Artificial
-
-
-Resumo automático da evolução do paciente
-Geração de relatórios
-Sugestão de plano alimentar
-Substituições inteligentes de alimentos
-Chat para nutricionista
-
-
-🗺 Roadmap
-
-
- Configuração inicial do NestJS
- Módulo Nutricionista
- Módulo Paciente
- Módulo Avaliação Antropométrica
- Módulo Alimentos (TACO + Open Food Facts)
- Módulo Plano Alimentar
- Módulo Refeições e Itens
- Exportação PDF
- Dashboard
- Autenticação JWT + bcrypt
- Inteligência Artificial
- Frontend (React + Next.js)
-
-
-🔗 Links
-
-
-GitHub: github.com/JhonatanMiranda221
-LinkedIn: linkedin.com/in/devjhonatanmiranda
+LinkedIn:
+linkedin.com/in/devjhonatanmiranda
