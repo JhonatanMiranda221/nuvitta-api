@@ -1,11 +1,13 @@
-import { IsString, IsNotEmpty, IsEmail, MinLength, Length, IsOptional, IsPhoneNumber, IsDate, IsEnum, IsBoolean } from 'class-validator';
+import { IsString, IsNotEmpty, IsEmail, MinLength, Length, IsOptional, IsPhoneNumber, IsDate, IsEnum, IsBoolean, IsNumber } from 'class-validator';
 import { Sexo } from '../entities/paciente.entity';
+import { Type } from 'class-transformer';
 export class CreatePacienteDto {
     
     @IsString()
     @IsNotEmpty({ message: 'O nome é obrigatório' })
     nome!: string;
 
+    @Type(() => Date)
     @IsDate({
     message: 'Informe uma data válida'
     })
@@ -34,9 +36,11 @@ export class CreatePacienteDto {
     @IsNotEmpty({ message: 'O objetivo é obrigatório' })
     objetivo!: string;
 
-    @IsBoolean()
-    ativo!: boolean;
-
-    @IsNotEmpty({ message: 'O ID do nutricionista é obrigatório' })
-    nutricionistaId!: number;       
+    @IsNotEmpty({
+    message: 'O ID do nutricionista é obrigatório'
+    })
+    @IsNumber({}, {
+    message: 'O ID do nutricionista deve ser um número'
+    })
+    nutricionistaId!: number;      
 }
