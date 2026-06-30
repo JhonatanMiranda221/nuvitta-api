@@ -1,6 +1,7 @@
 
 import { Nutricionista } from 'src/nutricionista/entities/nutricionista.entity';
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn,UpdateDateColumn, ManyToOne} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn,UpdateDateColumn, ManyToOne, OneToMany} from 'typeorm';
+import { AvaliacaoAntropometrica } from '../../av.antropometrica/entities/av.antropometrica.entity';
 
 export enum Sexo {
     MASCULINO = 'M',
@@ -45,5 +46,8 @@ export class Paciente {
       
     })
       nutricionista!: Nutricionista;
+
+    @OneToMany(() => AvaliacaoAntropometrica, (avaliacao) => avaliacao.paciente)
+    avaliacoes!: AvaliacaoAntropometrica[];
 
 }
