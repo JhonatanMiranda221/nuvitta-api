@@ -14,11 +14,6 @@ Uma plataforma completa para nutricistas gerenciarem pacientes, avaliações, pl
 
 O **Nuvitta** é um sistema de gestão nutricional desenvolvido para auxiliar nutricionistas no acompanhamento completo de seus pacientes.
 
-O nome surgiu da união entre:
-
-**Nutrição + Vita (vida em latim)**
-
-O projeto busca criar uma solução moderna, intuitiva e acessível, inspirada em plataformas como **Dietbox, Nutrium e WebDiet**, porém utilizando uma arquitetura escalável e preparada para recursos avançados como inteligência artificial.
 
 ---
 
