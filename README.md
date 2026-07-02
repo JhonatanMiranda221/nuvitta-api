@@ -103,7 +103,7 @@ Responsáveis pela validação e transferência dos dados.
 ## Clone o repositório
 
 ```bash
-git clone https://github.com/JhonatanMiranda221/projeto_nuvitta.git
+git clone https://github.com/JhonatanMiranda221/nuvitta-api.git
 ```
 
 ## Instale as dependências
