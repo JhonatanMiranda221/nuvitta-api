@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NutricionistaModule } from './nutricionista/nutricionista.module';
 import{ PacienteModule } from './paciente/paciente.module';
+import { AvaliacaoAntropometricaModule } from './av.antropometrica/avaliacaoantropometrica.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import{ PacienteModule } from './paciente/paciente.module';
       inject: [ConfigService],
     }),
     NutricionistaModule,
-    PacienteModule
+    PacienteModule,
+    AvaliacaoAntropometricaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
