@@ -1,7 +1,7 @@
 
 import { Nutricionista } from 'src/nutricionista/entities/nutricionista.entity';
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn,UpdateDateColumn, ManyToOne, OneToMany} from 'typeorm';
-import { AvaliacaoAntropometrica } from '../../av.antropometrica/entities/av.antropometrica.entity';
+import { AvaliacaoAntropometrica } from '../../av.antropometrica/entities/avaliacaoantropometrica.entity';
 
 export enum Sexo {
     MASCULINO = 'M',

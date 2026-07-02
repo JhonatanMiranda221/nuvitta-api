@@ -54,5 +54,9 @@ export class CreateAvaliacaoAntropometricaDto {
   @IsDate()
   dataAvaliacao!: Date;
 
+  @IsNumber()
+  @IsPositive()
+  pacienteId!: number;
+
 }
 
