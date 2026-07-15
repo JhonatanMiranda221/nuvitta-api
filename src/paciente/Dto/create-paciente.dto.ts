@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsEmail, MinLength, Length, IsOptional, IsPhoneNumber, IsDate, IsEnum, IsBoolean, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsEmail, Length, IsDate, IsEnum, IsNumber } from 'class-validator';
 import { Sexo } from '../entities/paciente.entity';
 import { Type } from 'class-transformer';
 export class CreatePacienteDto {
