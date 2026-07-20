@@ -1,5 +1,5 @@
 # 🍎 Nuvitta Backend
-
+> ⚠️ **Projeto em construção** — funcionalidades sendo implementadas ativamente.
 <div align="center">
 
 ## Gestão inteligente para profissionais de nutrição
