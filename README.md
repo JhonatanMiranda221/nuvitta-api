@@ -1,11 +1,10 @@
 # 🍎 Nuvitta Backend
-> ⚠️ **Projeto em construção** — funcionalidades sendo implementadas ativamente.
 <div align="center">
 
 ## Gestão inteligente para profissionais de nutrição
 
 Uma plataforma completa para nutricionistas gerenciarem pacientes, avaliações, planos alimentares e evolução nutricional.
-
+> ⚠️ **Projeto em construção** — funcionalidades sendo implementadas ativamente.
 </div>
 
 ---
