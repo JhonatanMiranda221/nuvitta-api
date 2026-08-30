@@ -139,103 +139,93 @@ DB_SYNC=true
 
 ---
 
-# 📦 Módulos
+📦 Módulos
+✅ Nutricionista
 
-## ✅ Nutricionista
+Gerenciamento dos profissionais da plataforma
 
-Módulo responsável pelo gerenciamento dos profissionais.
+Método	Rota	Descrição
+GET	/nutricionista	Lista todos
+GET	/nutricionista/:id	Busca por ID
+GET	/nutricionista/nome/:nome	Busca por nome
+POST	/nutricionista	Cria nutricionista
+PUT	/nutricionista/:id	Atualiza nutricionista
+DELETE	/nutricionista/:id	Remove nutricionista
+✅ Paciente
 
-Funcionalidades:
+Gerenciamento dos pacientes vinculados ao nutricionista
 
-* Cadastro de nutricionistas
-* Atualização de informações
-* Busca por ID
-* Busca por nome
-* Controle de CRN
+Método	Rota	Descrição
+GET	/paciente	Lista todos
+GET	/paciente/:id	Busca por ID
+GET	/paciente/nome/:nome	Busca por nome
+POST	/paciente	Cria paciente
+PUT	/paciente/:id	Atualiza paciente
+DELETE	/paciente/:id	Remove paciente
+✅ Avaliação Antropométrica
 
-Rotas:
+Registro de avaliações físicas dos pacientes com cálculos automáticos
 
-| Método | Rota                      | Descrição              |
-| ------ | ------------------------- | ---------------------- |
-| GET    | /nutricionista            | Lista todos            |
-| GET    | /nutricionista/:id        | Busca por ID           |
-| GET    | /nutricionista/nome/:nome | Busca por nome         |
-| POST   | /nutricionista            | Cria nutricionista     |
-| PUT    | /nutricionista/:id        | Atualiza nutricionista |
-| DELETE | /nutricionista/:id        | Remove nutricionista   |
+Método	Rota	Descrição
+GET	/avaliacao	Lista todas
+GET	/avaliacao/:id	Busca por ID
+GET	/avaliacao/paciente/:id	Busca por paciente
+POST	/avaliacao	Cria avaliação
+PUT	/avaliacao/:id	Atualiza avaliação
+DELETE	/avaliacao/:id	Remove avaliação
+🔜 Próximos módulos
+Módulo	Status
+Consulta	🔜 Em desenvolvimento
+Agenda	🔜 Planejado
+Financeiro	🔜 Planejado
+Exportação PDF	🔜 Planejado
+Dashboard	🔜 Planejado
+Autenticação JWT + bcrypt	🔜 Planejado
+Inteligência Artificial	🔜 Planejado
+Frontend React + Next.js	🔜 Planejado
+🔗 Integrações
+Integração	Finalidade	Status
+ViaCEP	Busca de endereço pelo CEP no cadastro do paciente	🔜 Planejado
+Resend	Email de confirmação de consulta e lembretes	🔜 Planejado
+Mercado Pago	Pagamento de consultas com sandbox	🔜 Planejado
+🗺 Roadmap
 
----
+Fase 1 — Base ✅
 
-## ✅ Paciente
+ Configuração inicial do NestJS
+ Módulo Nutricionista
+ Módulo Paciente
+ Avaliação Antropométrica
 
-Módulo responsável pelo gerenciamento dos pacientes vinculados aos nutricistas.
+Fase 2 — Clínica 🔜
 
-Funcionalidades:
+ Módulo Consulta
+ Agenda
 
-* Cadastro de pacientes
-* Validação de dados
-* Busca por ID
-* Busca por nome
-* Atualização de informações
-* Controle de pacientes ativos
-* Relacionamento Nutricionista → Pacientes
+Fase 3 — Integrações 🔜
 
-Relacionamento:
+ ViaCEP
+ Resend
+ Mercado Pago
 
-```
-Nutricionista (1)
-        |
-        |
-        N
-Paciente
-```
+Fase 4 — Relatórios 🔜
 
-Rotas:
+ Exportação PDF
+ Dashboard
 
-| Método | Rota                 | Descrição         |
-| ------ | -------------------- | ----------------- |
-| GET    | /paciente            | Lista todos       |
-| GET    | /paciente/:id        | Busca por ID      |
-| GET    | /paciente/nome/:nome | Busca por nome    |
-| POST   | /paciente            | Cria paciente     |
-| PUT    | /paciente/:id        | Atualiza paciente |
-| DELETE | /paciente/:id        | Remove paciente   |
+Fase 5 — Segurança 🔜
 
----
+ Autenticação JWT
+ bcrypt
 
-# 🔜 Próximos módulos
+Fase 6 — IA 🔜
 
-| Módulo                             | Status                |
-| ---------------------------------- | --------------------- |
-| Avaliação Antropométrica           | 🔜 Em desenvolvimento |
-| Alimentos (TACO + Open Food Facts) | 🔜 Planejado          |
-| Plano Alimentar                    | 🔜 Planejado          |
-| Refeições e Itens                  | 🔜 Planejado          |
-| Exportação PDF                     | 🔜 Planejado          |
-| Dashboard                          | 🔜 Planejado          |
-| Autenticação JWT + bcrypt          | 🔜 Planejado          |
-| Inteligência Artificial            | 🔜 Planejado          |
-| Frontend React + Next.js           | 🔜 Planejado          |
+ Inteligência Artificial
 
----
+Fase 7 — Frontend 🔜
 
-# 🗺 Roadmap
+ React + Next.js + Tailwind + Shadcn UI
 
-* [x] Configuração inicial do NestJS
-* [x] Módulo Nutricionista
-* [x] Módulo Paciente
-* [ ] Avaliação Antropométrica
-* [ ] Banco de alimentos TACO
-* [ ] Integração Open Food Facts
-* [ ] Plano Alimentar
-* [ ] Refeições e Itens
-* [ ] Exportação PDF
-* [ ] Dashboard
-* [ ] Autenticação JWT + bcrypt
-* [ ] Inteligência Artificial
-* [ ] Frontend React + Next.js
-
----
 
 # 👨‍💻 Autor
 
