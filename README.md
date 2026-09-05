@@ -22,7 +22,6 @@ Criar uma plataforma onde nutricionistas possam:
 
 * 👤 Gerenciar pacientes
 * 📊 Registrar avaliações antropométricas
-* 🥗 Criar planos alimentares personalizados
 * 📈 Acompanhar evolução dos pacientes
 * 📄 Gerar relatórios nutricionais
 * 🤖 Utilizar inteligência artificial como assistente nutricional
