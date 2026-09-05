@@ -3,7 +3,7 @@
 
 ## Gestão inteligente para profissionais de nutrição
 
-Uma plataforma completa para nutricionistas gerenciarem pacientes, avaliações, planos alimentares e evolução nutricional.
+Uma plataforma completa para nutricionistas gerenciarem pacientes, avaliações e evolução nutricional.
 > ⚠️ **Projeto em construção** — funcionalidades sendo implementadas ativamente.
 </div>
 
