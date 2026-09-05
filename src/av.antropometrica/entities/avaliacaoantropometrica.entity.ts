@@ -101,13 +101,8 @@ export class AvaliacaoAntropometrica {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  
-  @ManyToOne(
-    () => Paciente,
-    (paciente) => paciente.avaliacoes,
-    {
-        onDelete: 'CASCADE',
-    },
-    )
-    paciente!: Paciente;
-    }
+  @ManyToOne(() => Paciente, (paciente) => paciente.avaliacoes, {
+    onDelete: 'CASCADE',
+  })
+  paciente!: Paciente;
+}

@@ -1,17 +1,8 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsOptional,
-  IsNumber,
- 
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsNumber } from 'class-validator';
 import { Type } from 'class-transformer';
-import {OrigemAlimento} from 'src/shared/enums/origem-alimento.enum';
-
-
+import { OrigemAlimento } from 'src/shared/enums/origem-alimento.enum';
 
 export class CreateAlimentoDto {
-
   @IsString()
   @IsNotEmpty({ message: 'O nome do alimento é obrigatório' })
   nome!: string;
@@ -35,7 +26,4 @@ export class CreateAlimentoDto {
   @Type(() => Number)
   @IsNumber({}, { message: 'As gorduras devem ser um número' })
   gorduras!: number;
-
-  
-
 }

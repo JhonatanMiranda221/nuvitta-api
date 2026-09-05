@@ -1,9 +1,10 @@
 import {
-    IsDate, 
-    IsNumber, 
-    IsPositive, 
-    IsString, 
-    IsOptional} from 'class-validator';
+  IsDate,
+  IsNumber,
+  IsPositive,
+  IsString,
+  IsOptional,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 export class CreateAvaliacaoAntropometricaDto {
   @IsNumber()
@@ -13,7 +14,7 @@ export class CreateAvaliacaoAntropometricaDto {
   @IsNumber()
   @IsPositive()
   altura!: number;
-  
+
   @IsNumber()
   @IsPositive()
   cintura!: number;
@@ -33,7 +34,7 @@ export class CreateAvaliacaoAntropometricaDto {
   @IsNumber()
   @IsPositive()
   panturrilha!: number;
-  
+
   @IsNumber()
   @IsPositive()
   percentualGordura!: number;
@@ -57,6 +58,4 @@ export class CreateAvaliacaoAntropometricaDto {
   @IsNumber()
   @IsPositive()
   pacienteId!: number;
-
 }
-
