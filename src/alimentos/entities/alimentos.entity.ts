@@ -1,13 +1,7 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  Unique,
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { OrigemAlimento } from 'src/shared/enums/origem-alimento.enum';
 
-
-@Entity({ name: "tb_alimentos" })
+@Entity({ name: 'tb_alimentos' })
 @Unique(['origem', 'externalId'])
 export class Alimento {
   @PrimaryGeneratedColumn()
@@ -22,22 +16,21 @@ export class Alimento {
   @Column({ length: 100, nullable: true })
   marca?: string;
 
-  @Column("float")
+  @Column('float')
   calorias!: number;
 
-  @Column("float")
+  @Column('float')
   proteinas!: number;
 
-  @Column("float")
+  @Column('float')
   carboidratos!: number;
 
-  @Column("float")
+  @Column('float')
   gorduras!: number;
 
-  
   @Column({
-  type: 'enum',
-  enum: OrigemAlimento,
-})
-    origem!: OrigemAlimento;
+    type: 'enum',
+    enum: OrigemAlimento,
+  })
+  origem!: OrigemAlimento;
 }

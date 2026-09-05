@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { NutricionistaModule } from './nutricionista/nutricionista.module';
-import{ PacienteModule } from './paciente/paciente.module';
+import { PacienteModule } from './paciente/paciente.module';
 import { AvaliacaoAntropometricaModule } from './av.antropometrica/avaliacaoantropometrica.module';
 
 @Module({

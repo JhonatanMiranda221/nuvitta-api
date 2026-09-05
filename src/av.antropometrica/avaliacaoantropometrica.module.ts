@@ -8,12 +8,7 @@ import { AvaliacaoAntropometricaController } from './controllers/avaliacaoantrop
 import { AvaliacaoAntropometricaService } from './services/avaliacaoantropometrica.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      AvaliacaoAntropometrica,
-      Paciente,
-    ]),
-  ],
+  imports: [TypeOrmModule.forFeature([AvaliacaoAntropometrica, Paciente])],
   controllers: [AvaliacaoAntropometricaController],
   providers: [AvaliacaoAntropometricaService],
   exports: [AvaliacaoAntropometricaService],

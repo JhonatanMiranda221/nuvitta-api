@@ -1,53 +1,58 @@
-
 import { Nutricionista } from 'src/nutricionista/entities/nutricionista.entity';
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn,UpdateDateColumn, ManyToOne, OneToMany} from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { AvaliacaoAntropometrica } from '../../av.antropometrica/entities/avaliacaoantropometrica.entity';
 
 export enum Sexo {
-    MASCULINO = 'M',
-    FEMININO = 'F',
-    OUTRO = 'O',
+  MASCULINO = 'M',
+  FEMININO = 'F',
+  OUTRO = 'O',
 }
 
 @Entity({ name: 'tb_pacientes' })
 export class Paciente {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column({ length: 100 })
-    nome!: string;
+  @Column({ length: 100 })
+  nome!: string;
 
-    @Column()
-    dataNascimento!: Date;
-    
-    @Column({ type: 'enum', enum: Sexo })
-    sexo!: Sexo;
+  @Column()
+  dataNascimento!: Date;
 
-    @Column ({ unique: true, length: 150 })
-    email!: string;
+  @Column({ type: 'enum', enum: Sexo })
+  sexo!: Sexo;
 
-    @Column({ length: 20 })
-    telefone!: string;
+  @Column({ unique: true, length: 150 })
+  email!: string;
 
-    @Column({ length: 200 })
-    objetivo!: string;
+  @Column({ length: 20 })
+  telefone!: string;
 
-    @Column({default:true})
-    ativo!: boolean;
+  @Column({ length: 200 })
+  objetivo!: string;
 
-    @CreateDateColumn()
-    createdAt!: Date;
+  @Column({ default: true })
+  ativo!: boolean;
 
-    @UpdateDateColumn()
-    updatedAt!: Date;
+  @CreateDateColumn()
+  createdAt!: Date;
 
-    @ManyToOne(() => Nutricionista, (nutricionista) => nutricionista.pacientes, {
-        onDelete: 'CASCADE', // Se o nutricionista for deletado, os pacientes dele também serão
-      
-    })
-      nutricionista!: Nutricionista;
+  @UpdateDateColumn()
+  updatedAt!: Date;
 
-    @OneToMany(() => AvaliacaoAntropometrica, (avaliacao) => avaliacao.paciente)
-    avaliacoes!: AvaliacaoAntropometrica[];
+  @ManyToOne(() => Nutricionista, (nutricionista) => nutricionista.pacientes, {
+    onDelete: 'CASCADE', // Se o nutricionista for deletado, os pacientes dele também serão
+  })
+  nutricionista!: Nutricionista;
 
+  @OneToMany(() => AvaliacaoAntropometrica, (avaliacao) => avaliacao.paciente)
+  avaliacoes!: AvaliacaoAntropometrica[];
 }
